@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="my-4">
+    <h1>{{ lesson.title }}</h1>
+    
+    <div class="row mt-4">
+        <div class="col-md-6">
+            <p class="lead">{{ lesson.content }}</p>
+        </div>
+        <div class="col-md-12 d-flex justify-content-center align-items-center">
+            <img src="{{ lesson.image }}" alt="{{ lesson.title }}" class="lesson-image img-fluid">
+        </div>
+    </div>
+    
+    <div class="d-flex justify-content-between mt-4">
+        {% if lesson_id > 1 %}
+        <a href="{{ url_for('learn', lesson_id=lesson_id-1) }}" class="btn btn-outline-primary">&larr; Previous</a>
+        {% else %}
+        <div></div>
+        {% endif %}
+        
+        <a href="{{ next_url }}" class="btn btn-primary">
+            {% if 'quiz' in next_url %}Start Quiz{% else %}Next &rarr;{% endif %}
+        </a>
+    </div>
+    
+    <div class="progress mt-4">
+        <div class="progress-bar" role="progressbar" style="width: {{ (lesson_id / 9) * 100 }}%;" 
+             aria-valuenow="{{ lesson_id }}" aria-valuemin="0" aria-valuemax="9">
+            {{ lesson_id }} / 9
+        </div>
+    </div>
+</div>
+{% endblock %}

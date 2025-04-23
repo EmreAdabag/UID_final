@@ -1,0 +1,90 @@
+{
+    "lessons": [
+      {
+        "id": 1,
+        "title": "Aperture",
+        "content": "",
+        "image": "/static/images/aperture1.png"
+      },
+      {
+        "id": 2,
+        "title": "Aperture",
+        "content": "",
+        "image": "/static/images/aperture2.png"
+      },
+      {
+        "id": 3,
+        "title": "Shutter Speed",
+        "content": "",
+        "image": "/static/images/shutter1.png"
+      },
+      {
+        "id": 4,
+        "title": "Shutter Speed",
+        "content": "",
+        "image": "/static/images/shutter2.png"
+      },
+      {
+        "id": 5,
+        "title": "ISO",
+        "content": "",
+        "image": "/static/images/iso1.png"
+      },
+      {
+        "id": 6,
+        "title": "ISO",
+        "content": "",
+        "image": "/static/images/iso2.png"
+      },
+      {
+        "id": 7,
+        "title": "All 3 setting also affect the brightness of the image",
+        "content": "",
+        "image": "/static/images/summary1.png"
+      },
+      {
+        "id": 8,
+        "title": "Interaction",
+        "content": "",
+        "image": "/static/images/summary2.png"
+      }
+    ],
+    "quiz": [
+      {
+        "id": 1,
+        "question": "What is this effect called?",
+        "image": "/static/images/quiz_depth_field.png",
+        "options": {
+          "A": "Motion blur",
+          "B": "Low ISO",
+          "C": "Small depth of field",
+          "D": "Graininess"
+        },
+        "correct": "C"
+      },
+      {
+        "id": 2,
+        "question": "What setting created this effect?",
+        "image": "/static/images/quiz_motion.png",
+        "options": {
+          "A": "Long shutter speed",
+          "B": "Small aperture",
+          "C": "Short shutter speed",
+          "D": "Wide aperture"
+        },
+        "correct": "A"
+      },
+      {
+        "id": 3,
+        "question": "What could be done to make this image brighter?",
+        "image": "/static/images/quiz_dark.png",
+        "options": {
+          "A": "Increase aperture (lower f-stop)",
+          "B": "Decrease shutter speed (longer exposure)",
+          "C": "Increase ISO",
+          "D": "All of the above"
+        },
+        "correct": "D"
+      }
+    ]
+  }

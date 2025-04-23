@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="text-center my-5">
+    <h1 class="mb-4">Learn Camera Settings</h1>
+    <p class="lead">Aperture, Shutter Speed, and ISO</p>
+    <img src="/static/images/camera.jpg" alt="Camera" class="img-fluid mb-4" style="max-height: 300px;">
+    <div>
+        <a href="{{ url_for('start') }}" class="btn btn-primary btn-lg">Start Learning</a>
+    </div>
+</div>
+{% endblock %}

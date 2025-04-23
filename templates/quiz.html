@@ -1,0 +1,57 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="my-4">
+    <h1>Quiz Question {{ question_id }}</h1>
+    
+    <div class="text-center my-4">
+        <img src="{{ question.image }}" alt="Quiz Question" class="quiz-image">
+    </div>
+    
+    <h3>{{ question.question }}</h3>
+    
+    <form method="post" id="quizForm">
+        <div class="my-4">
+            {% for key, option in question.options.items() %}
+            <div class="form-check">
+                <input class="form-check-input" type="radio" name="answer" id="option{{ key }}" value="{{ key }}" required>
+                <label class="option-label" for="option{{ key }}">
+                    {{ key }}. {{ option }}
+                </label>
+            </div>
+            {% endfor %}
+        </div>
+        
+        <div class="d-flex justify-content-between">
+            {% if question_id > 1 %}
+            <a href="{{ url_for('quiz', question_id=question_id-1) }}" class="btn btn-outline-primary">&larr; Previous</a>
+            {% else %}
+            <a href="{{ url_for('learn', lesson_id=9) }}" class="btn btn-outline-primary">&larr; Back to Lessons</a>
+            {% endif %}
+            
+            <button type="submit" class="btn btn-primary">
+                {% if question_id < 3 %}Next &rarr;{% else %}Finish Quiz{% endif %}
+            </button>
+        </div>
+        
+        <div class="progress mt-4">
+            <div class="progress-bar" role="progressbar" style="width: {{ (question_id / 3) * 100 }}%;" 
+                 aria-valuenow="{{ question_id }}" aria-valuemin="0" aria-valuemax="3">
+                {{ question_id }} / 3
+            </div>
+        </div>
+    </form>
+</div>
+{% endblock %}
+
+{% block scripts %}
+<script>
+    $(document).ready(function() {
+        // Make the entire label clickable
+        $('.option-label').click(function() {
+            const inputId = $(this).attr('for');
+            $('#' + inputId).prop('checked', true);
+        });
+    });
+</script>
+{% endblock %}

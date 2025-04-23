@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="my-4">
+    <h1>Quiz Results</h1>
+    
+    <div class="alert {% if score == total %}alert-success{% elif score >= total/2 %}alert-warning{% else %}alert-danger{% endif %} my-4">
+        <h3>Your score: {{ score }} / {{ total }}</h3>
+        <div class="progress mt-2">
+            <div class="progress-bar {% if score == total %}bg-success{% elif score >= total/2 %}bg-warning{% else %}bg-danger{% endif %}" 
+                 role="progressbar" style="width: {{ (score / total) * 100 }}%;" 
+                 aria-valuenow="{{ score }}" aria-valuemin="0" aria-valuemax="{{ total }}">
+                {{ (score / total) * 100 }}%
+            </div>
+        </div>
+    </div>
+    
+    <h3>Review your answers:</h3>
+    
+    <div class="list-group my-4">
+        {% for answer in answers %}
+        <div class="list-group-item {% if answer.is_correct %}list-group-item-success{% else %}list-group-item-danger{% endif %}">
+            <h5>{{ loop.index }}. {{ answer.question }}</h5>
+            <p>Your answer: {{ answer.user_answer }}</p>
+            {% if not answer.is_correct %}
+            <p>Correct answer: {{ answer.correct_answer }}</p>
+            {% endif %}
+        </div>
+        {% endfor %}
+    </div>
+    
+    <div class="text-center mt-4">
+        <a href="{{ url_for('home') }}" class="btn btn-primary">Start Over</a>
+    </div>
+</div>
+{% endblock %}
