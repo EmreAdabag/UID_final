@@ -3,10 +3,10 @@
 {% block content %}
 <div class="text-center my-5">
     <h1 class="mb-4">Learn Camera Settings</h1>
-    <p class="lead">Aperture, Shutter Speed, and ISO</p>
-    <img src="/static/images/camera.jpg" alt="Camera" class="img-fluid mb-4" style="max-height: 300px;">
     <div>
-        <a href="{{ url_for('start') }}" class="btn btn-primary btn-lg">Start Learning</a>
+        <img src="/static/images/icons.png" alt="Camera Settings Icons" class="img-fluid mb-4" style="max-height: 100px;">
+        <a href="{{ url_for('start') }}" class="btn btn-primary btn-lg d-block mx-auto mb-3" style="max-width: 300px;">Start Learning</a>
+        <a href="{{ url_for('quiz', question_id=1) }}" class="btn btn-primary btn-lg d-block mx-auto" style="max-width: 300px;">Quiz</a>
     </div>
 </div>
 {% endblock %}
