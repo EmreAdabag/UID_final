@@ -53,11 +53,11 @@
       {
         "id": 1,
         "question": "What is this effect called?",
-        "image": "/static/images/quiz_depth_field.png",
+        "image": "/static/images/quiz1.png",
         "options": {
           "A": "Motion blur",
           "B": "Low ISO",
-          "C": "Small depth of field",
+          "C": "Short depth of field",
           "D": "Graininess"
         },
         "correct": "C"
@@ -65,7 +65,7 @@
       {
         "id": 2,
         "question": "What setting created this effect?",
-        "image": "/static/images/quiz_motion.png",
+        "image": "/static/images/quiz2.png",
         "options": {
           "A": "Long shutter speed",
           "B": "Small aperture",
@@ -77,12 +77,12 @@
       {
         "id": 3,
         "question": "What could be done to make this image brighter?",
-        "image": "/static/images/quiz_dark.png",
+        "image": "/static/images/quiz3.png",
         "options": {
-          "A": "Increase aperture (lower f-stop)",
-          "B": "Decrease shutter speed (longer exposure)",
-          "C": "Increase ISO",
-          "D": "All of the above"
+          "A": "Increase aperture, increase shutter speed, increase ISO",
+          "B": "Increase aperture, decrease shutter speed, increase ISO",
+          "C": "Increase aperture, increase shutter speed, decrease ISO",
+          "D": "Decrease aperture, decrease shutter speed, increase ISO"
         },
         "correct": "D"
       }
