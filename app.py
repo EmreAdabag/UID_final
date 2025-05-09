@@ -37,6 +37,36 @@ def start():
     })
     return redirect(url_for('learn', lesson_id=1))
 
+# Direct quiz access route
+@app.route('/direct_quiz', methods=['POST'])
+def direct_quiz():
+    # Set the session started flag to allow quiz access
+    session['started'] = True
+    user_data['page_visits'].append({
+        'page': 'direct_quiz',
+        'timestamp': datetime.now().strftime('%Y-%m-%d %H:%M:%S')
+    })
+    return redirect(url_for('quiz', question_id=1))
+
+# Navigate between lessons via POST request
+@app.route('/navigate_lesson/<int:lesson_id>', methods=['POST'])
+def navigate_lesson(lesson_id):
+    # Ensure session is started
+    session['started'] = True
+    
+    # Record page visit
+    user_data['page_visits'].append({
+        'page': f'navigate_to/{lesson_id}',
+        'timestamp': datetime.now().strftime('%Y-%m-%d %H:%M:%S')
+    })
+    
+    content = load_content()
+    # Handle the case where we might navigate beyond the last lesson
+    if lesson_id > len(content['lessons']):
+        return redirect(url_for('quiz', question_id=1))
+    
+    return redirect(url_for('learn', lesson_id=lesson_id))
+
 # Learning route
 @app.route('/learn/<int:lesson_id>', methods=['GET'])
 def learn(lesson_id):

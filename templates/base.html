@@ -22,7 +22,7 @@
         }
         .nav-link {
             font-weight: 500;
-            margin-left: 40px;
+            margin-left: 80px;
             color: darkgray !important;
         }
         .nav-link.active {
@@ -30,6 +30,12 @@
         }
         .navbar-nav {
             margin-left: 0;
+        }
+        .nav-item {
+            margin-left: 40px;
+        }
+        .nav-item:first-child {
+            margin-left: 100px;
         }
         .lesson-image {
             max-width: 100%;
@@ -50,6 +56,26 @@
         .option-label:hover {
             background-color: #f8f9fa;
         }
+        .nav-form {
+            display: inline;
+        }
+        .nav-button {
+            background: none;
+            border: none;
+            color: darkgray;
+            font-weight: 500;
+            padding: 8px 0;
+            cursor: pointer;
+            transition: color 0.3s ease;
+        }
+        .nav-button:hover {
+            color: #0d6efd;
+        }
+        .nav-button.active {
+            color: #0d6efd !important;
+            font-weight: 700;
+            border-bottom: 2px solid #0d6efd;
+        }
     </style>
 </head>
 <body>
@@ -62,16 +88,24 @@
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav">
                     <li class="nav-item">
-                        <a class="nav-link" href="{{ url_for('learn', lesson_id=1) }}">Aperture</a>
+                        <form action="{{ url_for('navigate_lesson', lesson_id=1) }}" method="post" class="nav-form">
+                            <button type="submit" class="nav-button">Aperture</button>
+                        </form>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="{{ url_for('learn', lesson_id=2) }}">Shutter Speed</a>
+                        <form action="{{ url_for('navigate_lesson', lesson_id=3) }}" method="post" class="nav-form">
+                            <button type="submit" class="nav-button">Shutter Speed</button>
+                        </form>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="{{ url_for('learn', lesson_id=3) }}">ISO</a>
+                        <form action="{{ url_for('navigate_lesson', lesson_id=5) }}" method="post" class="nav-form">
+                            <button type="submit" class="nav-button">ISO</button>
+                        </form>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="{{ url_for('quiz', question_id=1) }}">Quiz</a>
+                        <form action="{{ url_for('direct_quiz') }}" method="post" class="nav-form">
+                            <button type="submit" class="nav-button">Quiz</button>
+                        </form>
                     </li>
                 </ul>
             </div>
@@ -89,13 +123,16 @@
             // Get current URL path
             var path = window.location.pathname;
             
-            // Add active class to the current nav link
-            $('.nav-link').each(function() {
-                var href = $(this).attr('href');
-                if (path.includes(href)) {
-                    $(this).addClass('active');
-                }
-            });
+            // Add active class to the current nav button
+            if (path.includes('/learn/1') || path.includes('/learn/2')) {
+                $('.nav-button').eq(0).addClass('active');
+            } else if (path.includes('/learn/3') || path.includes('/learn/4')) {
+                $('.nav-button').eq(1).addClass('active');
+            } else if (path.includes('/learn/5') || path.includes('/learn/6')) {
+                $('.nav-button').eq(2).addClass('active');
+            } else if (path.includes('/quiz')) {
+                $('.nav-button').eq(3).addClass('active');
+            }
         });
     </script>
     {% block scripts %}{% endblock %}

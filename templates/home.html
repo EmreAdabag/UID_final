@@ -6,7 +6,9 @@
     <div>
         <img src="/static/images/icons.png" alt="Camera Settings Icons" class="img-fluid mb-4" style="max-height: 100px;">
         <a href="{{ url_for('start') }}" class="btn btn-primary btn-lg d-block mx-auto mb-3" style="max-width: 300px;">Start Learning</a>
-        <a href="{{ url_for('quiz', question_id=1) }}" class="btn btn-primary btn-lg d-block mx-auto" style="max-width: 300px;">Quiz</a>
+        <form action="{{ url_for('direct_quiz') }}" method="post">
+            <button type="submit" class="btn btn-primary btn-lg d-block mx-auto" style="max-width: 300px;">Quiz</button>
+        </form>
     </div>
 </div>
 {% endblock %}
